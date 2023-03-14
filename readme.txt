@@ -1,4 +1,5 @@
 1. Group Screen Name: 
+question
 
 2. Which external person (human resource) other than group members or
 TA I consulted: 
@@ -19,17 +20,17 @@ Link to pdf appears here
 I pledge on my honour (and all the things my mother taught me) that I
 have not given or received any unauthorized assistance on this
 assignment or any previous task.  
-Signed by 
+Signed by Sanchit Jindal (200020120), Hardik Rajpal (200050048) and Amruta Parulekar (20D070009)
 
 5. If I am awarded 90 marks for this task, my perception of how much
 the breakdown is:
 
-Question | My Roll   | Partner   | Replace Partner by Number|
-	 |  10%      |    20%    |    0%   |
+Question | 200020120   | 200050048   | 20D070009|
+	 |  10%        |      20%    |     0%   |
 
 
 6.  Group Id:
-Enter here
+15
 
 7. Latedays taken:
 Checkpoint| Due     | Submitted | Lateday
@@ -42,7 +43,7 @@ To be decided
 
 9. Github Link:
 
-https://github.com/ComputerVision763-2023/what/
+https://github.com/ComputerVision763/openproject-15/
 
 10. Form for submitting proposal
 https://docs.google.com/forms/d/e/1FAIpQLSeg1XGlWyd2qPlmsVaPCkGazW3_QabZHD7S6z4lDleVo3PcxA/viewform
