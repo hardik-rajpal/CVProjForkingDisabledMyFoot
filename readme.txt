@@ -6,12 +6,17 @@ TA I consulted:
 
 
 3. What resources I used on the Internet:
-a. 
-b.
+a. https://arxiv.org/pdf/1511.04472.pdf
+b. https://github.com/mhmoed/jigsaw.git
+c. https://github.com/bbrattoli/JigsawPuzzlePytorch
+d. https://github.com/hummingbird-12/image_puzzle
+e. https://github.com/shivaverma/Jigsaw-Solver
+f. https://www.cs.bgu.ac.il/~ben-shahar/Publications/2011-Pomeranz_Shemesh_and_Ben_Shahar-A_Fully_Automated_Greedy_Square_Jigsaw_Puzzle_Solver.pdf
+g. https://github.com/yi-jiayu/shuffled-images/blob/master/main.py
 
 3b. chatGPT or other similar resources used:
 Yes
-Link to pdf appears here
+Link to which? pdf appears here
 
 
 
@@ -25,8 +30,8 @@ Signed by Sanchit Jindal (200020120), Hardik Rajpal (200050048) and Amruta Parul
 5. If I am awarded 90 marks for this task, my perception of how much
 the breakdown is:
 
-Question | 200020120   | 200050048   | 20D070009|
-	 |  10%        |      20%    |     0%   |
+Question | 200020120   | 200050048   | 20D070009  |
+		 |  100%        |      100%   |     100%   |
 
 
 6.  Group Id:
@@ -34,9 +39,9 @@ Question | 200020120   | 200050048   | 20D070009|
 
 7. Latedays taken:
 Checkpoint| Due     | Submitted | Lateday
-1         | 0x/3/23 |      a/b/c|
-2         | 0y/3/23 |
-3         | 0z/4/23 |
+1         | 14/3/23 |    14/3/23| 0
+2         | 31/3/23 |     1/4/23| 1
+3         | 9/4/23  |    11/4/23| 2
 
 8. Link to Video Presentation:
 To be decided
