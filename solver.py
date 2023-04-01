@@ -1,5 +1,5 @@
 
-from itertools import chain, groupby, product
+from itertools import groupby
 import random
 from scipy.spatial.distance import mahalanobis
 from scipy.optimize import linprog
