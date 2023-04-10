@@ -51,4 +51,6 @@ The scripts here are (Note all programs are run from the root directory of the r
 
 
 ## m3 (DL Models)
-...
+This folder presents jupyter notebooks for training two models and their corresponding versions for Google colab.
+The files themselves are pretty self-explanatory to follow to train a model keras.
+Model designs and metrics are present in convincingDirectory/m3.
