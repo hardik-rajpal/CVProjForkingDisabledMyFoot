@@ -1,7 +1,8 @@
 This readme explains how to run the code and is of some value.
 All our code has been placed in separate folder folders numberd m1, m2 and m3.
-
-## m1
+All our code requires the following folder to be downloaded: (https://drive.google.com/drive/folders/1V46ejEvwPg0D5aw-9BDSaPDnh_rgfZI_)
+This must be saved in root directory of the repository and named `cv`.
+## m1 (Linear Programming)
 This has the linear programming method's implementation (https://arxiv.org/pdf/1511.04472.pdf)
 The scripts here are (Note all programs are run from the root directory of the repository):
 
@@ -46,3 +47,8 @@ The scripts here are (Note all programs are run from the root directory of the r
  - solver.py: contains a class used in the main.py file.
 
 
+## m2 (Greedy Approach)
+
+
+## m3 (DL Models)
+...
