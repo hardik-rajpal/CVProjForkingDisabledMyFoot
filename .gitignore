@@ -2,3 +2,4 @@ cv
 cv.tar.gz
 segmented
 out.txt
+**/__pycache__
