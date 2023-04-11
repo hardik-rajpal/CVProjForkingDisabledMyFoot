@@ -3,25 +3,55 @@ import sys
 import os
 import argparse
 import cv2
+from skimage import io, color, img_as_ubyte
 
 
 # 0 Up
 # 1 Left
 # 2 Down
 # 3 Right
+P = 0.3
+Q = 0.0625
 
-def difference(square_i, square_j, k):
-    M, N , C = square_i.shape
-    if k == 0: ## square_j above square_i
-        return np.sum((square_j[M - 1, :] - square_i[0, :])**2)
-    elif k == 1: ## square_j left of square_i
-        return np.sum((square_i[:, N - 1] - square_j[:, 0])**2)
-    elif k == 2: ## square_i below square_i
-        return np.sum((square_j[M - 1, :] - square_i[0, :])**2)
-    elif k == 3: ## square_j left of square_i
-        return np.sum((square_i[:, N - 1] - square_j[:, 0])**2)
+def difference(x_i, x_j, relation):
+    nrows, ncols = x_i.shape[0], x_i.shape[1]
+
+    if relation == 1:
+        return difference(x_j, x_i, 3)
+    elif relation == 3:
+        return np.sum(
+            np.power(np.power(np.abs((2 * x_i[:, ncols - 1] - x_i[:, ncols - 2]) - x_j[:, 0]), P) +
+                     np.power(np.abs((2 * x_j[:, 0] - x_j[:, 1]) - x_i[:, ncols - 1]), P), Q / P))
+    elif relation == 0:
+        return difference(x_j, x_i, 2)
+    elif relation == 2 :
+        return np.sum(
+            np.power(np.power(np.abs((2 * x_i[nrows - 1] - x_i[nrows - 2]) - x_j[0]), P) +
+                     np.power(np.abs((2 * x_j[0] - x_j[1]) - x_i[nrows - 1]), P), Q / P))
     else:
-        exit(1)
+        raise TypeError(f'invalid relation: {relation}')
+
+
+
+# def difference(square_i, square_j, k):
+#     P = 0.3
+#     Q = 0.0625
+#     M, N , C = square_i.shape
+#     if k == 0: ## square_j above square_i
+#         return  np.sum(np.power(np.power(np.abs((2 * square_j[M - 1] - square_j[M - 2]) - square_i[0]), P) +
+#                      np.power(np.abs((2 * square_i[0] - square_i[1]) - square_j[M - 1]), P), Q / P))
+#     elif k == 1: ## square_j right of square_i
+#         return np.sum(np.power(np.power(np.abs((2 * square_i[:, N - 1] - square_i[:, N - 2]) - square_j[:, 0]), P) +
+#                      np.power(np.abs((2 * square_j[:, 0] - square_j[:, 1]) - square_i[:, N - 1]), P), Q / P))
+#     elif k == 2: ## square_j below square_i
+#         return  np.sum(np.power(np.power(np.abs((2 * square_i[M - 1] - square_i[M - 2]) - square_j[0]), P) +
+#                      np.power(np.abs((2 * square_j[0] - square_j[1]) - square_i[M - 1]), P), Q / P))
+#
+#     elif k == 3: ## square_j left of square_i
+#         return np.sum(np.power(np.power(np.abs((2 * square_j[:, N - 1] - square_j[:, N - 2]) - square_i[:, 0]), P) +
+#                      np.power(np.abs((2 * square_i[:, 0] - square_i[:, 1]) - square_j[:, N - 1]), P), Q / P))
+#     else:
+#         exit(1)
 
 def adjacent(x, y):
     return [(x-1, y), (x, y+1), (x+1,y), (x, y-1)]
@@ -172,7 +202,9 @@ def show_image(answer, squares, M, N):
                 # better_show("bye", squares[answer[x][y]])
                 # better_show("bye", image[x * squareheight: (x+1)*squareheight, y*squarewidth: (y+1)*squarewidth, :])
 
-    image = image.astype(np.uint8)
+    image = color.lab2rgb(image)
+    image = img_as_ubyte(image)
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     better_show("hello", image)
 
 def calculate_score(answer, best):
@@ -191,8 +223,12 @@ def calculate_score(answer, best):
     return num / ((M - 1) * N + M * (N - 1))
 
 def solve(image_name, rows, cols):
-    image = cv2.imread(image_name)
+    # image = cv2.imread(image_name)
+    image = io.imread(image_name)
+
+    image = color.rgb2lab(image)
     M, N, _ = image.shape
+    # image = cv2.cvtColor(image, cv2.COLOR_BGR2LAB)
 
     squares = []
     pieceHeight = int(M / rows)
@@ -233,7 +269,7 @@ def solve(image_name, rows, cols):
                 if i == j:
                     continue
                 elif i < j:
-                    compatability[k][i][j] = 1 if percentiles[k][i] == 0 else np.exp(-1 * dissimilarity[k][i][j] / percentiles[k][i]) 
+                    compatability[k][i][j] = 0 if percentiles[k][i] == 0 else np.exp(-1 * dissimilarity[k][i][j] / percentiles[k][i]) 
                 else:
                     compatability[k][i][j] = compatability[2 - k][j][i]
 
@@ -244,8 +280,6 @@ def solve(image_name, rows, cols):
     
     answer = np.zeros((rows, cols), dtype = int) - 1
     remaining = set(range(rows * cols))
-    answer[rows // 2][cols // 2] = 2
-    remaining.remove(2)
 
     max_score = -1
 
@@ -304,7 +338,7 @@ def segment(answer, best):
                     for k in range(4):
                         a,b = move(k, x, y)
                         if a >= 0 and a < M and b >= 0 and b < N and segments[a][b] == segment_counter:
-                            if best[k][answer[x][y]] == answer[a][b] and best[k - 2][answer[a][b]] == answer[x][y]:  
+                            if best[2-k][answer[x][y]] == answer[a][b] and best[k][answer[a][b]] == answer[x][y]:  
                                 in_segment = False
                     
                     if in_segment:
@@ -321,7 +355,7 @@ if __name__ == "__main__":
     args = parser.parse_args();
     image_name = args.image
 
-    rows = 4
-    cols = 4
+    rows = 8
+    cols = 8
 
     solve(image_name, rows, cols)
