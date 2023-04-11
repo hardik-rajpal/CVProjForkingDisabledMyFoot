@@ -255,7 +255,6 @@ def solve(image_name, rows, cols):
                     dissimilarity[k][i][j] = difference(square_i, square_j, k)
                 else:
                     dissimilarity[k][i][j] = dissimilarity[2 - k][j][i]
-                print(dissimilarity[k][i][j])
 
     percentiles = np.zeros((4, len(squares)))
     for i in range(len(squares)):
