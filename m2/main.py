@@ -238,6 +238,7 @@ def solve(image_name, rows, cols):
         for col in range(cols):
             squares.append(image[row * pieceHeight: (row + 1) * pieceHeight, col*pieceWidth : (col + 1) * pieceWidth, :])
 
+
     # for square in squares:
     #     cv2.imshow("hello", square)
     #     cv2.waitKey()
@@ -254,6 +255,7 @@ def solve(image_name, rows, cols):
                     dissimilarity[k][i][j] = difference(square_i, square_j, k)
                 else:
                     dissimilarity[k][i][j] = dissimilarity[2 - k][j][i]
+                print(dissimilarity[k][i][j])
 
     percentiles = np.zeros((4, len(squares)))
     for i in range(len(squares)):
@@ -280,6 +282,8 @@ def solve(image_name, rows, cols):
     
     answer = np.zeros((rows, cols), dtype = int) - 1
     remaining = set(range(rows * cols))
+    answer[rows // 2][cols // 2] = 0
+    remaining.remove(0)
 
     max_score = -1
 
