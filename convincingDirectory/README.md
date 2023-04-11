@@ -48,6 +48,18 @@ The scripts here are (Note all programs are run from the root directory of the r
 
 
 ## m2 (Greedy Approach)
+Files added `main.py`
+
+TO RUN : `python3 m2/main.py --image <imagePath>`  
+Example: `python3 m2/main.py --image convincingDirectory/m2/original.jpg`  
+To make the algorithm go to the next step press `q`
+
+Libraries needed:
+- scikit-image
+- opencv-python
+- numpy
+
+
 
 
 ## m3 (DL Models)
