@@ -16,7 +16,7 @@ f. https://www.cs.bgu.ac.il/~ben-shahar/Publications/2011-Pomeranz_Shemesh_and_B
 g. https://github.com/yi-jiayu/shuffled-images/blob/master/main.py
 
 3b. chatGPT or other similar resources used:
-Yes
+No
 Link to video: https://drive.google.com/file/d/1bGmytx1qu9rDG6tjQfhX5JnogNvfaUgH/view?usp=share_link
 Link to slides: https://docs.google.com/presentation/d/1YeArblXpM9-mixvFBIax6QnuDRpCUMv-/edit?usp=share_link&ouid=108104724740443208657&rtpof=true&sd=true
 
